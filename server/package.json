@@ -5,7 +5,10 @@
   "author": "Saba Chikhinashvili",
   "license": "MIT",
   "scripts": {
-    "start:dev": "ts-node-dev --poll index.ts"
+    "start:local": "ts-node-dev --poll index.ts",
+    "start:dev": "node index.ts",
+    "start:prod": "node index.ts",
+    "build": "tsc"
   },
   "dependencies": {
     "cors": "^2.8.5",
