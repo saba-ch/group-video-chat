@@ -9,7 +9,7 @@ steps:
     args: [
       'build',
       '-f',
-      './deployment/prod/Dockerfile',
+      './deployment/Dockerfile',
       '-t',
       'gcr.io/group-video-chat/prod-group-video-chat:$BUILD_ID',
       '.'
