@@ -21,4 +21,4 @@ spec:
           - path: /?(.*)
             backend:
               serviceName: dev-client-service
-              servicePort: 8000
+              servicePort: 80

@@ -22,4 +22,4 @@ spec:
           - path: /?(.*)
             backend:
               serviceName: prod-client-service
-              servicePort: 8000
+              servicePort: 80
