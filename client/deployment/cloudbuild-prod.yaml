@@ -25,10 +25,10 @@ steps:
     args: [
       'set',
       'image',
-      'deployment/dev-client-deployment',
-      'dev-group-video-chat-client=gcr.io/group-video-chat/dev-group-video-chat-client:$BUILD_ID',
+      'deployment/prod-client-deployment',
+      'prod-group-video-chat-client=gcr.io/group-video-chat/prod-group-video-chat-client:$BUILD_ID',
       '--namespace',
-      'development'
+      'production'
     ]
     env:
       - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-c'
