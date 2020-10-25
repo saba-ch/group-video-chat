@@ -1,7 +1,7 @@
 import express from 'express'
 import cors, { CorsOptions } from 'cors'
 
-const whitelist = ['http://localhost:3000']
+const whitelist = ['http://localhost:3000', 'http://34.76.39.20/']
 
 const corsOptions: CorsOptions = {
   credentials: true,
