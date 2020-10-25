@@ -16,4 +16,8 @@ const corsOptions: CorsOptions = {
 const app = express()
 app.use(cors(corsOptions))
 
+app.get('/', (_req, res) => {
+  res.send('Hello')
+})
+
 export default app
