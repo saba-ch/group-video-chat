@@ -15,8 +15,9 @@ const socketToRoom: ISocketRoom = {}
 
 const createSocket = (server: Server) => {
   const io = socket(server)
+  const nsp = io.of('websocket')
 
-  io.on('connection', (socket) => {
+  nsp.on('connection', (socket) => {
     socket.on('join-room', (roomId) => {
       if (users[roomId]) {
         users[roomId].push(socket.id)
@@ -31,11 +32,11 @@ const createSocket = (server: Server) => {
     })
 
     socket.on('signal', (payload: { signal: any, callerId: string, userToSignal: string }) => {
-      io.to(payload.userToSignal).emit('user-joined', { signal: payload.signal, callerId: payload.callerId })
+      nsp.to(payload.userToSignal).emit('user-joined', { signal: payload.signal, callerId: payload.callerId })
     })
 
     socket.on('return-signal', (payload: { signal: any, callerId: string, userToSignal: string }) => {
-      io.to(payload.callerId).emit('returned-signal', { signal: payload.signal, id: socket.id })
+      nsp.to(payload.callerId).emit('returned-signal', { signal: payload.signal, id: socket.id })
     })
 
     socket.on('disconnect', () => {
