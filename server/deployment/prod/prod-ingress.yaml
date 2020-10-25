@@ -4,10 +4,7 @@ metadata:
   namespace: production
   name: prod-ingress
   annotations:
-    networking.gke.io/managed-certificates: sabachka-cert
     kubernetes.io/ingress.global-static-ip-name: prod-ip
-  labels:
-    app: group-video-chat
 spec:
   backend:
     serviceName: prod-service
