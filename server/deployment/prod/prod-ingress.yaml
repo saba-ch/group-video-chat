@@ -4,11 +4,10 @@ metadata:
   namespace: production
   name: prod-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
     kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.global-static-ip-name: prod-ip
-    nginx.org/websocket-services: "websockettest-cluster-ip-service"
+    nginx.org/websocket-services: "prod-service"
 spec:
   rules:
     - http:
@@ -16,11 +15,11 @@ spec:
           - path: /websocket/.*
             backend:
               serviceName: prod-service
-              servicePort: 3020
+              servicePort: 8000
           - path: /socket.io/.*
             backend:
               serviceName: prod-service
-              servicePort: 3020
+              servicePort: 8000
           - path: /?(.*)
             backend:
               serviceName: prod-service
