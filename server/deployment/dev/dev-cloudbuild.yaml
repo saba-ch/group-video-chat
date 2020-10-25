@@ -5,20 +5,20 @@ steps:
       '-f',
       './server/deployment/dev/Dockerfile.dev',
       '-t',
-      'gcr.io/ticketing-dev-281211/dev-group-vide-chat:$BUILD_ID',
+      'gcr.io/group-video-chat/dev-group-video-chat:$BUILD_ID',
       './server'
     ]
   - name: gcr.io/cloud-builders/docker
     args: [
       'push',
-      'gcr.io/ticketing-dev-281211/dev-group-vide-chat:$BUILD_ID'
+      'gcr.io/group-video-chat/dev-group-video-chat:$BUILD_ID'
     ]
   - name: gcr.io/cloud-builders/kubectl
     args: [
       'set',
       'image',
       'deployment/dev-deployment',
-      'dev-group-vide-chat=gcr.io/ticketing-dev-281211/dev-group-vide-chat:$BUILD_ID',
+      'dev-group-video-chat=gcr.io/group-video-chat/dev-group-video-chat:$BUILD_ID',
       '--namespace',
       'development'
     ]

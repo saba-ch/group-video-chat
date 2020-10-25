@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: dev
-          image: gcr.io/google-containers/dev-group-video-chat
+          image: gcr.io/group-video-chat/dev-group-video-chat
           resources:
             limits:
               memory: "2000Mi"

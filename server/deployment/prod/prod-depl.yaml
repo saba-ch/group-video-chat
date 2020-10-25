@@ -13,8 +13,8 @@ spec:
         app: prod
     spec:
       containers:
-        - name: prod-group-vide-chat
-          image: gcr.io/google-containers/prod-group-video-chat
+        - name: prod-group-video-chat
+          image: gcr.io/group-video-chat/prod-group-video-chat
           resources:
             limits:
               memory: "2000Mi"
