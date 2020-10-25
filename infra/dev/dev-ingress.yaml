@@ -4,25 +4,21 @@ metadata:
   namespace: development
   name: dev-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.global-static-ip-name: dev-ip
-    nginx.org/websocket-services: "dev-service"
+    nginx.org/websocket-services: dev-service
   labels:
     app: group-video-chat
 spec:
   rules:
     - http:
         paths:
-          - path: /websocket/.*
-            backend:
-              serviceName: dev-service
-              servicePort: 8000
-          - path: /socket.io/.*
+          - path: /api/?(.*)
             backend:
               serviceName: dev-service
               servicePort: 8000
           - path: /?(.*)
             backend:
-              serviceName: dev-service
+              serviceName: dev-client-service
               servicePort: 8000
