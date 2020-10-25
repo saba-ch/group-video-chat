@@ -8,6 +8,8 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.global-static-ip-name: prod-ip
     nginx.org/websocket-services: "prod-service"
+  labels:
+    app: group-video-chat
 spec:
   rules:
     - http:
