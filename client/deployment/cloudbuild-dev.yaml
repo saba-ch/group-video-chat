@@ -26,7 +26,7 @@ steps:
       'set',
       'image',
       'deployment/prod-client-deployment',
-      'prod-group-video-chat=gcr.io/group-video-chat/prod-group-video-chat-client:$BUILD_ID',
+      'prod-group-video-chat-client=gcr.io/group-video-chat/prod-group-video-chat-client:$BUILD_ID',
       '--namespace',
       'production'
     ]
