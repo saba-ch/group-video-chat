@@ -8,6 +8,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.global-static-ip-name: dev-ip
     nginx.org/websocket-services: dev-service
+    nginx.ingress.kubernetes.io/websocket-services: prod-service
   labels:
     app: group-video-chat
 spec:
@@ -15,6 +16,14 @@ spec:
     - http:
         paths:
           - path: /api/?(.*)
+            backend:
+              serviceName: dev-service
+              servicePort: 8000
+          - path: /websocket/.*
+            backend:
+              serviceName: dev-service
+              servicePort: 8000
+          - path: /socket.io/.*
             backend:
               serviceName: dev-service
               servicePort: 8000
