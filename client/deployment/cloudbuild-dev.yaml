@@ -5,10 +5,31 @@ steps:
   - name: 'gcr.io/cloud-builders/npm'
     args: ['run', 'build:dev']
     dir: 'client'
-  - name: 'gcr.io/group-video-chat/firebase'
+  - name: gcr.io/cloud-builders/docker
     args: [
-      'deploy',
-      '--project=group-video-chat',
-      '--only=hosting:video-chat-develop'
+      'build',
+      '-f',
+      './deployment/Dockerfile',
+      '-t',
+      'gcr.io/group-video-chat/dev-group-video-chat-client:$BUILD_ID',
+      '.'
     ]
     dir: 'client'
+  - name: gcr.io/cloud-builders/docker
+    args: [
+      'push',
+      'gcr.io/group-video-chat/dev-group-video-chat-client:$BUILD_ID'
+    ]
+    dir: 'client'
+  - name: gcr.io/cloud-builders/kubectl
+    args: [
+      'set',
+      'image',
+      'deployment/prod-client-deployment',
+      'prod-group-video-chat=gcr.io/group-video-chat/prod-group-video-chat-client:$BUILD_ID',
+      '--namespace',
+      'production'
+    ]
+    env:
+      - 'CLOUDSDK_COMPUTE_ZONE=europe-west1-c'
+      - 'CLOUDSDK_CONTAINER_CLUSTER=group-video-chat'
