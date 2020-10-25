@@ -14,9 +14,14 @@ const corsOptions: CorsOptions = {
 }
 
 const app = express()
+app.set('trust proxy', true)
 app.use(cors(corsOptions))
 
 app.get('/', (_req, res) => {
+  res.send('Hello')
+})
+
+app.get('/api', (_req, res) => {
   res.send('Hello')
 })
 
