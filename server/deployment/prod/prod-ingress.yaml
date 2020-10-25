@@ -1,33 +1,14 @@
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
   namespace: production
   name: prod-ingress
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    nginx.ingress.kubernetes.io/use-regex: "true"
+    networking.gke.io/managed-certificates: sabachka-cert
     kubernetes.io/ingress.global-static-ip-name: prod-ip
-    nginx.org/websocket-services: "prod-service"
   labels:
     app: group-video-chat
 spec:
-  tls:
-    - hosts:
-        - sabachka.space
-      secretName: sabachka-cert-1
-  rules:
-    - host: sabachka.space
-      http:
-        paths:
-          - path: /websocket/.*
-            backend:
-              serviceName: prod-service
-              servicePort: 8000
-          - path: /socket.io/.*
-            backend:
-              serviceName: prod-service
-              servicePort: 8000
-          - path: /?(.*)
-            backend:
-              serviceName: prod-service
-              servicePort: 8000
+  backend:
+    serviceName: prod-service
+    servicePort: 8000
