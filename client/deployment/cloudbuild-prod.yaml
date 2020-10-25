@@ -11,7 +11,7 @@ steps:
       '-f',
       './deployment/Dockerfile',
       '-t',
-      'gcr.io/group-video-chat/prod-group-video-chat:$BUILD_ID',
+      'gcr.io/group-video-chat/prod-group-video-chat-client:$BUILD_ID',
       '.'
     ]
     dir: 'client'
