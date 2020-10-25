@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['install']
+    dir: 'client'
+  - name: 'gcr.io/cloud-builders/npm'
+    args: ['run', 'build:dev']
+    dir: 'client'
+  - name: 'gcr.io/group-video-chat/firebase'
+    args: [
+      'deploy',
+      '--project=group-video-chat',
+      '--only=hosting:video-chat-develop'
+    ]
+    dir: 'client'

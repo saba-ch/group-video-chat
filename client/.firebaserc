@@ -1,0 +1,17 @@
+{
+  "projects": {
+    "default": "group-video-chat"
+  },
+  "targets": {
+    "group-video-chat": {
+      "hosting": {
+        "video-chat-prod": [
+          "video-chat-prod"
+        ],
+        "video-chat-develop": [
+          "video-chat-develop"
+        ]
+      }
+    }
+  }
+}
