@@ -13,7 +13,7 @@ spec:
         app: dev
     spec:
       containers:
-        - name: dev
+        - name: dev-group-video-chat
           image: gcr.io/group-video-chat/dev-group-video-chat
           resources:
             limits:
