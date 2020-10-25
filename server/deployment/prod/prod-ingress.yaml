@@ -8,10 +8,14 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
     kubernetes.io/ingress.global-static-ip-name: prod-ip
     nginx.org/websocket-services: "prod-service"
-    cert-manager.io/cluster-issuer: sabachka-cert
+    cert-manager.io/issuer: sabachka-cert
   labels:
     app: group-video-chat
 spec:
+  tls:
+    - hosts:
+        - sabachka.space
+      secretName: sabachka-cert
   rules:
     - host: sabachka.space
       http:
@@ -28,7 +32,3 @@ spec:
             backend:
               serviceName: prod-service
               servicePort: 8000
-  tls:
-    - hosts:
-        - sabachka.space
-      secretName: sabachka-cert
