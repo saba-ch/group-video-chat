@@ -30,7 +30,7 @@ const Room = () => {
 
   useEffect(() => {
     if (!currUserStream || !joined) return
-    socketRef.current = io.connect("http://34.76.39.20/websocket", {
+    socketRef.current = io.connect("https://34.76.39.20/websocket", {
       'reconnection': true,
       transports: ['websocket']
     })
