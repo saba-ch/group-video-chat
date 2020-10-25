@@ -6,11 +6,8 @@ const whitelist = ['http://localhost:3000', 'http://34.76.39.20/', 'http://10.56
 const corsOptions: CorsOptions = {
   credentials: true,
   origin: (origin = '', callback) => {
-    console.log("origin", origin)
-    if (whitelist.includes(origin))
-      return callback(null, true)
-
-    callback(new Error('Not allowed by CORS'))
+    if (whitelist.includes(origin)) return callback(null, true)
+    return callback(null, true)
   }
 }
 

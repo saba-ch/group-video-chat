@@ -30,7 +30,7 @@ const Room = () => {
 
   useEffect(() => {
     if (!currUserStream || !joined) return
-    socketRef.current = io.connect("http://localhost:8000/")
+    socketRef.current = io.connect("http://34.76.39.20/websocket")
     socketRef.current!.emit("join-room", params.roomId!)
     socketRef.current!.on("users", (users: string[]) => {
       const peers: Peer.Instance[] = []
