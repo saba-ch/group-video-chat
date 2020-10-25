@@ -6,8 +6,8 @@
   "license": "MIT",
   "scripts": {
     "start:local": "ts-node-dev --poll index.ts",
-    "start:dev": "node index.ts",
-    "start:prod": "node index.ts",
+    "start:dev": "node dist/index.js",
+    "start:prod": "node dist/index.js",
     "build": "tsc --build tsconfig.json"
   },
   "dependencies": {
