@@ -16,6 +16,7 @@ app.set('trust proxy', true)
 app.use(cors())
 
 app.get('/', (_req, res) => {
+  console.info('hello')
   res.send('Hello')
 })
 
