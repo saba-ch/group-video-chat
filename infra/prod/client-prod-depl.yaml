@@ -15,12 +15,6 @@ spec:
       containers:
         - name: prod-group-video-chat-client
           image: gcr.io/group-video-chat/prod-group-video-chat-client
-          resources:
-            limits:
-              memory: "2000Mi"
-              cpu: "500m"
-          ports:
-            - containerPort: 80
 ---
 apiVersion: v1
 kind: Service
