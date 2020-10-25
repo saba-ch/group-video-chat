@@ -1,15 +1,28 @@
-apiVersion: networking.k8s.io/v1
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   namespace: development
   name: dev-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    kubernetes.io/ingress.global-static-ip-name: dev-ip
+    nginx.org/websocket-services: "dev-service"
+  labels:
+    app: group-video-chat
 spec:
   rules:
     - http:
         paths:
-          - path: /api
+          - path: /websocket/.*
+            backend:
+              serviceName: dev-service
+              servicePort: 8000
+          - path: /socket.io/.*
+            backend:
+              serviceName: dev-service
+              servicePort: 8000
+          - path: /?(.*)
             backend:
               serviceName: dev-service
               servicePort: 8000
